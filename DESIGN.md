@@ -1,0 +1,32 @@
+---
+name: Austin Kostreba — Stone Rings
+description: A personal introduction on cream paper beside five quietly floating stone rings.
+colors:
+  paper-cream: "#f7ecda"
+  charcoal: "#252831"
+  link-plum: "#63406d"
+  coral: "#a44834"
+  selection-ink: "#0f3e60"
+---
+
+# Stone Rings
+
+The visual reference is `assets/plates/stone-rings.png`, supplied by Austin. Preserve the authentic pigment contours and plum, mauve, gray, and terracotta colors of its five individual forms. Keep the existing warm paper texture and sparse asymmetrical composition.
+
+## Typography and copy
+
+Use Libre Baskerville for the name, with a clean capital A; use Inter for body copy. Both are self-hosted. Inter is intentional here: its neutral shapes closely match the supplied reference’s supporting text. Keep the name on one line where it fits; mobile sizing scales down with the viewport. Keep copy left aligned and separate from artwork.
+
+The role reads “Software engineering manager at Renaissance.” Supporting copy describes work on software that helps educators understand student needs and coordinate support. Do not imply ownership of engineering across all Renaissance MTSS products. Preserve the supplied career history, education, and LinkedIn destination.
+
+## Artwork and motion
+
+Five independent crops preserve the reference’s positions and sizes. A one-time 2D canvas operation removes cream paper around the actual pigment contours so the page paper shows through. Cropped source images remain as a fallback. No WebGL, fluid solver, dye diffusion, shape distortion, or water effect.
+
+Each ring follows an independent elliptical path of roughly 7–9 px horizontally and 9–11 px vertically. Its long, deliberately slow cycle feels suspended while remaining visible at rest. A nearby mouse or pen introduces up to 10 px of smoothly eased repulsion, limited to a 220 px neighborhood. The rings stay in their general locations. Touch retains ordinary scrolling. Motion stops offscreen or in a hidden document; reduced motion displays the original stationary composition.
+
+## Layout and accessibility
+
+Desktop preserves the reference’s left-hand introduction and right-hand artwork. Below 900 px, place copy first and artwork below, maintaining the relative positions of all five rings. Keep generous paper between text and forms. Artwork is decorative and hidden from assistive technology. LinkedIn remains the only action, with a plum underline, coral hover, and visible keyboard focus.
+
+No cards, navigation, headshots, shadows, glass, or additional decoration.

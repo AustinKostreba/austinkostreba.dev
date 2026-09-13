@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-07T19:32:04Z",
+  "title": "Design System: Austin Kostreba — Floating Ink",
+  "extensions": {
+    "colorMeta": {
+      "paper-cream": {
+        "role": "neutral",
+        "displayName": "Sized Paper",
+        "canonical": "#f7ecda",
+        "tonalRamp": ["oklch(15% 0.027 78)", "oklch(27% 0.027 78)", "oklch(39% 0.027 78)", "oklch(51% 0.027 78)", "oklch(63% 0.027 78)", "oklch(75% 0.027 78)", "oklch(87% 0.027 78)", "oklch(95% 0.027 78)"]
+      },
+      "charcoal": {
+        "role": "neutral",
+        "displayName": "Printed Charcoal",
+        "canonical": "#252831",
+        "tonalRamp": ["oklch(15% 0.014 270)", "oklch(27% 0.014 270)", "oklch(39% 0.014 270)", "oklch(51% 0.014 270)", "oklch(63% 0.014 270)", "oklch(75% 0.014 270)", "oklch(87% 0.014 270)", "oklch(95% 0.014 270)"]
+      },
+      "deep-ink": {
+        "role": "primary",
+        "displayName": "Deep Ink",
+        "canonical": "#0f3e60",
+        "tonalRamp": ["oklch(15% 0.073 244)", "oklch(27% 0.073 244)", "oklch(39% 0.073 244)", "oklch(51% 0.073 244)", "oklch(63% 0.073 244)", "oklch(75% 0.073 244)", "oklch(87% 0.073 244)", "oklch(95% 0.073 244)"]
+      },
+      "tide-blue": {
+        "role": "secondary",
+        "displayName": "Tide Blue",
+        "canonical": "#71939e",
+        "tonalRamp": ["oklch(15% 0.04 218)", "oklch(27% 0.04 218)", "oklch(39% 0.04 218)", "oklch(51% 0.04 218)", "oklch(63% 0.04 218)", "oklch(75% 0.04 218)", "oklch(87% 0.04 218)", "oklch(95% 0.04 218)"]
+      },
+      "link-indigo": {
+        "role": "primary",
+        "displayName": "Linked Ink",
+        "canonical": "#173f70",
+        "tonalRamp": ["oklch(15% 0.083 254)", "oklch(27% 0.083 254)", "oklch(39% 0.083 254)", "oklch(51% 0.083 254)", "oklch(63% 0.083 254)", "oklch(75% 0.083 254)", "oklch(87% 0.083 254)", "oklch(95% 0.083 254)"]
+      },
+      "coral": {
+        "role": "tertiary",
+        "displayName": "Coral Drop",
+        "canonical": "#a44834",
+        "tonalRamp": ["oklch(15% 0.12 35)", "oklch(27% 0.12 35)", "oklch(39% 0.12 35)", "oklch(51% 0.12 35)", "oklch(63% 0.12 35)", "oklch(75% 0.12 35)", "oklch(87% 0.12 35)", "oklch(95% 0.12 35)"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Identity Display",
+        "purpose": "The name and future identity-level headings only."
+      },
+      "body": {
+        "displayName": "Biography Body",
+        "purpose": "Professional context in short, calm measures."
+      },
+      "label": {
+        "displayName": "Text Action",
+        "purpose": "Underlined text links and similarly quiet controls."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ambient-current",
+        "value": "multi-frequency sine flow at 0.0022 UV amplitude",
+        "purpose": "Nearly imperceptible baseline movement for the Tide Pool only."
+      },
+      {
+        "name": "link-state",
+        "value": "180ms ease-out",
+        "purpose": "Color and underline response for text links."
+      },
+      {
+        "name": "pointer-wake",
+        "value": "16 decaying wakes clamped to 0.045 UV velocity",
+        "purpose": "Restrained local deformation when a fine pointer moves over the Tide Pool."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stacked-reading-order",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "refersTo": "text-link",
+      "description": "The quiet inline action used for LinkedIn and future secondary destinations.",
+      "html": "<a class=\"ds-text-link\" href=\"#\">LinkedIn</a>",
+      "css": ".ds-text-link { color: #173f70; font: 430 1.125rem/1.3 'Commissioner Variable', sans-serif; text-decoration-color: currentColor; text-decoration-thickness: .07em; text-underline-offset: .22em; transition: color 180ms ease-out, text-decoration-thickness 180ms ease-out; } .ds-text-link:hover { color: #a44834; text-decoration-thickness: .11em; } .ds-text-link:focus-visible { outline: 2px solid #a44834; outline-offset: .35rem; border-radius: 1px; }"
+    },
+    {
+      "name": "Identity Heading",
+      "kind": "custom",
+      "description": "The sole display-typography role for a person's or section's identity.",
+      "html": "<h1 class=\"ds-identity-heading\">Austin Kostreba</h1>",
+      "css": ".ds-identity-heading { margin: 0; color: #252831; font-family: 'Ibarra Real Nova Variable', serif; font-size: clamp(4rem, 5.61vw, 5.5625rem); font-weight: 400; letter-spacing: -.025em; line-height: .94; }"
+    },
+    {
+      "name": "Biography Block",
+      "kind": "custom",
+      "description": "Short professional context set without a card or enclosing rule.",
+      "html": "<div class=\"ds-biography\"><strong>Software engineering manager in education technology.</strong><p>I lead engineering for products that support educators and students.</p></div>",
+      "css": ".ds-biography { max-width: 38rem; color: #252831; font-family: 'Commissioner Variable', sans-serif; font-size: 1.125rem; line-height: 1.3; } .ds-biography strong { font-weight: 510; } .ds-biography p { margin: 2.2rem 0 0; font-weight: 390; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Floating Ink",
+    "overview": "The system feels like a concise professional note printed on warm, sized paper, with one physical ebru gesture supplying identity. It is quiet, tactile, asymmetrical, and credible; the visual material should reward a closer look without delaying comprehension. The page stays deliberately sparse. Typography and negative space carry the biography while real pigment texture provides the only expressive flourish. No headshot, portfolio chrome, or decorative interface scaffolding competes with the introduction.",
+    "keyCharacteristics": [
+      "Warm paper rather than a flat digital white.",
+      "One concentrated indigo-and-tide-blue artwork with a rare coral center.",
+      "Editorial serif display type paired with a contemporary humanist sans.",
+      "Slow, nearly imperceptible artwork motion; everything else remains still.",
+      "Flat, borderless composition with generous negative space."
+    ],
+    "rules": [
+      {
+        "name": "The Coral Drop Rule",
+        "body": "Coral is rare. Reserve it for the artwork's center and one small interaction state; its scarcity gives it meaning.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Display Voice Rule",
+        "body": "Use Ibarra Real Nova for identity-level headings only. Supporting information stays in Commissioner.",
+        "section": "typography"
+      },
+      {
+        "name": "The Clear Waterline Rule",
+        "body": "Text and pigment never overlap. Their shared paper field is the relationship between them.",
+        "section": "layout"
+      },
+      {
+        "name": "The Physical Depth Rule",
+        "body": "Use material texture or actual interaction to create depth; do not imitate it with ornamental shadows or glass effects.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep biographical copy brief enough to understand in a few seconds.",
+      "Do use authentic raster paper and pigment assets when extending the material world.",
+      "Do preserve abundant paper around expressive imagery.",
+      "Do provide a complete still-image fallback and honor reduced-motion preferences."
+    ],
+    "donts": [
+      "Don't introduce headshots, cards, badges, icons, or ornamental navigation without a new product need.",
+      "Don't place copy over the Tide Pool or use marbling as a full-page wash.",
+      "Don't add gradients, glass, drop shadows, or simulated paper made from CSS noise.",
+      "Don't repeat coral broadly; it is the single warm interruption in a cool ink field."
+    ]
+  }
+}
