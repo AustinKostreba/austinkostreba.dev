@@ -8,7 +8,10 @@ test("rings render, move subtly, and respect reduced motion", async ({
   await page.goto("/");
   const rings = page.locator(".stone-ring");
   await expect(rings).toHaveCount(5);
-  await expect(rings.first().locator("canvas")).toHaveCSS("opacity", "1");
+  await expect(rings.first().locator("canvas").first()).toHaveCSS(
+    "opacity",
+    "1",
+  );
   const before = await rings
     .first()
     .evaluate((el) => getComputedStyle(el).transform);
@@ -60,9 +63,44 @@ test("copy, fonts, mobile layout and keyboard access", async ({ page }) => {
   const art = await page.locator(".stone-artwork").boundingBox();
   expect(art!.y).toBeGreaterThan(intro!.y + intro!.height);
   await page.keyboard.press("Tab");
+  await expect(page.getByRole("switch")).toBeFocused();
+  await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: /LinkedIn/ })).toBeFocused();
   await page.setViewportSize({ width: 320, height: 700 });
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
     320,
   );
+});
+
+test("day and night states switch copy, theme, and destination", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const shift = page.getByRole("switch");
+  await expect(shift).toHaveAttribute("aria-checked", "false");
+  await expect(page.locator("html")).toHaveAttribute("data-shift", "day");
+  await shift.click();
+  await expect(shift).toHaveAttribute("aria-checked", "true");
+  await expect(page.locator("html")).toHaveAttribute("data-shift", "night");
+  await expect(page.locator(".role")).toHaveText(
+    "Paid-on-call firefighter at West Metro Fire-Rescue District.",
+  );
+  await expect(page.locator(".current-work")).toContainText(
+    "On nights and weekends, I respond to emergencies",
+  );
+  await expect(
+    page.getByRole("link", { name: /West Metro Fire-Rescue/ }),
+  ).toHaveAttribute("href", "https://www.wmfrd.org/");
+  await expect(page.locator("body")).toHaveCSS(
+    "background-color",
+    "rgb(23, 21, 28)",
+  );
+  await expect(page.locator(".history")).toHaveCount(0);
+  await expect(page.locator(".ember-art").first()).toHaveCSS("opacity", "1");
+  await shift.click();
+  await shift.click();
+  await expect(shift).toHaveAttribute("aria-checked", "true");
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await shift.click();
+  await expect(page.locator("html")).toHaveAttribute("data-shift", "day");
 });

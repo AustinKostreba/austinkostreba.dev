@@ -7,6 +7,6 @@ related_targets: ["src/components/StoneRings.tsx"]
 
 # Home surface
 
-Mode: Experience. A concise professional introduction beside five subtly floating stone rings on warm paper. `assets/plates/stone-rings.png` is the visual reference. Preserve its authentic forms and colors, with no fluid or water effects.
+Mode: Experience. A concise, two-sided professional introduction beside five subtly floating forms. Day uses `assets/plates/stone-rings.png`; Night replaces them with tactile charcoal and ember forms in the same positions. Preserve the handmade quality, with no fluid or water effects.
 
-Use Libre Baskerville and Inter. Keep the artwork clear of text and place it below the introduction on mobile. Describe Austin as a software engineering manager at Renaissance, without implying broader engineering ownership. Respect reduced motion and preserve keyboard navigation and touch scrolling.
+Use Libre Baskerville and Inter. Keep the artwork clear of text and place it below the introduction on mobile. A Day/Night switch swaps between Austin’s software engineering manager role at Renaissance and his nights-and-weekends paid-on-call firefighter role at West Metro Fire-Rescue District. Night becomes charcoal paper with ember accents through a circular reveal from the switch. Avoid literal flames. Respect reduced motion and preserve keyboard navigation and touch scrolling.

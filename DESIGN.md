@@ -1,17 +1,21 @@
 ---
 name: Austin Kostreba — Stone Rings
-description: A personal introduction on cream paper beside five quietly floating stone rings.
+description: A two-sided professional card that moves from paper daylight to charcoal night.
 colors:
   paper-cream: "#f7ecda"
   charcoal: "#252831"
   link-plum: "#63406d"
   coral: "#a44834"
   selection-ink: "#0f3e60"
+  night-paper: "#17151c"
+  night-text: "#f2e8d8"
+  ember-link: "#eca16e"
+  ember-focus: "#ee7a45"
 ---
 
 # Stone Rings
 
-The visual reference is `assets/plates/stone-rings.png`, supplied by Austin. Preserve the authentic pigment contours and plum, mauve, gray, and terracotta colors of its five individual forms. Keep the existing warm paper texture and sparse asymmetrical composition.
+The day visual reference is `assets/plates/stone-rings.png`, supplied by Austin. Preserve the authentic pigment contours and plum, mauve, gray, and terracotta colors of its five individual forms. Night replaces those forms with `assets/plates/ember-coals.png`: five tactile charcoal-and-ember forms in matching positions. Keep the existing paper texture and sparse asymmetrical composition.
 
 ## Typography and copy
 
@@ -29,4 +33,10 @@ Each ring follows an independent elliptical path of roughly 7–9 px horizontall
 
 Desktop preserves the reference’s left-hand introduction and right-hand artwork. Below 900 px, place copy first and artwork below, maintaining the relative positions of all five rings. Keep generous paper between text and forms. Artwork is decorative and hidden from assistive technology. LinkedIn remains the only action, with a plum underline, coral hover, and visible keyboard focus.
 
-No cards, navigation, headshots, shadows, glass, or additional decoration.
+## Day and night
+
+A compact Day/Night switch above the name changes the role-specific copy and destination. Day presents Austin’s work as a software engineering manager at Renaissance and links to LinkedIn. Night presents his paid-on-call firefighter role at West Metro Fire-Rescue District, mentions nights and weekends and the communities of New Hope and Crystal, and links to the district website.
+
+Night turns the paper charcoal while retaining its texture, crossfades the rings into banked ember coals with a slow diffuse heat glow, and changes links to ember orange. Where View Transitions are available, the new state expands in a circular reveal from the switch. The reveal never blocks or disables the switch, and a repeated action interrupts the current reveal cleanly. Other browsers receive the same state with a soft color transition. Reduced motion switches immediately. The switch is a native button with `role="switch"`, a visible focus state, explicit Day/Night labels, and an accessible action label.
+
+No cards, navigation, headshots, shadows, glass, literal flame graphics, emergency iconography, or additional decoration.

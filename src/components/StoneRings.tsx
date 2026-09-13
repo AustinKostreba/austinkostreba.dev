@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import artwork from "../../assets/plates/stone-rings.png";
+import emberArtwork from "../../assets/plates/ember-coals.png";
 
 // Original artwork coordinates, including the delicate outer pigment marks.
 const rings = [
@@ -12,15 +13,18 @@ const rings = [
 
 export function StoneRings() {
   const root = useRef<HTMLDivElement>(null);
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState([false, false]);
 
   useEffect(() => {
     let disposed = false;
-    const image = new Image();
-    image.onload = () => {
-      if (disposed) return;
-      try {
-        const canvases = root.current!.querySelectorAll("canvas");
+    const images = [artwork, emberArtwork].map((source, imageIndex) => {
+      const image = new Image();
+      image.onload = () => {
+        if (disposed) return;
+        try {
+          const canvases = root.current!.querySelectorAll<HTMLCanvasElement>(
+            `[data-artwork="${imageIndex}"]`,
+          );
         rings.forEach((ring, index) => {
           const canvas = canvases[index];
           canvas.width = ring.width;
@@ -68,15 +72,21 @@ export function StoneRings() {
           }
           context.putImageData(pixels, 0, 0);
         });
-        setReady(true);
-      } catch {
-        // Cropped originals remain visible if pixel extraction is unavailable.
-      }
-    };
-    image.src = artwork;
+          setReady((current) =>
+            current.map((value, index) =>
+              index === imageIndex ? true : value,
+            ),
+          );
+        } catch {
+          // Cropped originals remain visible if pixel extraction is unavailable.
+        }
+      };
+      image.src = source;
+      return image;
+    });
     return () => {
       disposed = true;
-      image.onload = null;
+      images.forEach((image) => (image.onload = null));
     };
   }, []);
 
@@ -184,18 +194,28 @@ export function StoneRings() {
             height: `${(ring.height / 922) * 100}%`,
           }}
         >
-          <img
-            src={artwork}
-            alt=""
-            draggable="false"
-            hidden={ready}
-            style={{
-              width: `${(1586 / ring.width) * 100}%`,
-              left: `${(-ring.x / ring.width) * 100}%`,
-              top: `${(-ring.y / ring.height) * 100}%`,
-            }}
-          />
-          <canvas style={{ opacity: ready ? 1 : 0 }} />
+          {[artwork, emberArtwork].map((source, artworkIndex) => (
+            <div
+              className={`stone-art-layer ${artworkIndex ? "ember-art" : "day-art"}`}
+              key={source}
+            >
+              <img
+                src={source}
+                alt=""
+                draggable="false"
+                hidden={ready[artworkIndex]}
+                style={{
+                  width: `${(1586 / ring.width) * 100}%`,
+                  left: `${(-ring.x / ring.width) * 100}%`,
+                  top: `${(-ring.y / ring.height) * 100}%`,
+                }}
+              />
+              <canvas
+                data-artwork={artworkIndex}
+                style={{ opacity: ready[artworkIndex] ? 1 : 0 }}
+              />
+            </div>
+          ))}
         </div>
       ))}
     </div>
