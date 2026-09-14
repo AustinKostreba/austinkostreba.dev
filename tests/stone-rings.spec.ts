@@ -25,6 +25,15 @@ test("rings render, move subtly, and respect reduced motion", async ({
     bounds!.y + bounds!.height * 0.5,
   );
   await page.waitForTimeout(500);
+  expect(
+    await rings
+      .first()
+      .evaluate((el) =>
+        Number.parseFloat(
+          (el as HTMLElement).style.getPropertyValue("--pointer-heat"),
+        ),
+      ),
+  ).toBeGreaterThan(0);
   const transforms = await rings.evaluateAll((elements) =>
     elements.map((el) => {
       const matrix = new DOMMatrix(getComputedStyle(el).transform);

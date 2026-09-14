@@ -128,6 +128,7 @@ export function StoneRings() {
         const proximity = pointer
           ? Math.pow(Math.max(0, 1 - distance / 220), 2)
           : 0;
+        layer.style.setProperty("--pointer-heat", proximity.toFixed(3));
         const targetX = (dx / Math.max(distance, 1)) * proximity * 10;
         const targetY = (dy / Math.max(distance, 1)) * proximity * 10;
         const ease = 1 - Math.exp(-dt * 2.5);

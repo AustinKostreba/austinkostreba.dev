@@ -76,10 +76,28 @@ body {
 }
 .stone-ring {
   position: absolute;
+  --pointer-heat: 0;
+}
+.stone-ring::before {
+  position: absolute;
+  inset: 2%;
+  z-index: 0;
+  border-radius: 46%;
+  content: "";
+  background: rgb(204 52 30 / 0.78);
+  filter: blur(52px);
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 240ms ease-out;
+}
+:root[data-shift="night"] .stone-ring::before {
+  opacity: calc(0.34 + var(--pointer-heat) * 0.42);
+  animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 .stone-art-layer {
   position: absolute;
   inset: 0;
+  z-index: 1;
   overflow: hidden;
   transition: opacity 650ms ease;
 }
@@ -92,13 +110,9 @@ body {
 .ember-art canvas {
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 0 42px rgb(194 45 29 / 0.52));
-  animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 .ember-art img {
   z-index: 1;
-  filter: drop-shadow(0 0 42px rgb(194 45 29 / 0.52));
-  animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 :root[data-shift="night"] .day-art {
   opacity: 0;
@@ -278,7 +292,7 @@ h1 {
 
 @keyframes ember-breathe {
   to {
-    filter: drop-shadow(0 0 50px rgb(194 45 29 / 0.58));
+    transform: scale(1.05);
   }
 }
 
@@ -308,8 +322,7 @@ h1 {
   .stone-ring {
     transform: none !important;
   }
-  .ember-art canvas,
-  .ember-art img {
+  .stone-ring::before {
     animation: none;
   }
   *,
