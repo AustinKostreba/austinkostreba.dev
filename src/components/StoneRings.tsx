@@ -197,20 +197,9 @@ export function StoneRings() {
         >
           {[artwork, emberArtwork].map((source, artworkIndex) => (
             <div
-              className={`stone-art-layer ${artworkIndex ? "ember-art" : "day-art"} ${ready[artworkIndex] ? "art-ready" : ""}`}
+              className={`stone-art-layer ${artworkIndex ? "ember-art" : "day-art"}`}
               key={source}
             >
-              <img
-                src={source}
-                alt=""
-                draggable="false"
-                hidden={ready[artworkIndex]}
-                style={{
-                  width: `${(1586 / ring.width) * 100}%`,
-                  left: `${(-ring.x / ring.width) * 100}%`,
-                  top: `${(-ring.y / ring.height) * 100}%`,
-                }}
-              />
               <canvas
                 data-artwork={artworkIndex}
                 style={{ opacity: ready[artworkIndex] ? 1 : 0 }}

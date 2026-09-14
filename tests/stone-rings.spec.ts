@@ -1,5 +1,12 @@
 import { expect, test } from "@playwright/test";
 
+test("paper-backed image crops are not used during canvas loading", async ({
+  page,
+}) => {
+  await page.goto("/");
+  await expect(page.locator(".stone-art-layer img")).toHaveCount(0);
+});
+
 test("rings render, move subtly, and respect reduced motion", async ({
   page,
 }) => {

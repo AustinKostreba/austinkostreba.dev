@@ -104,14 +104,8 @@ body {
 .ember-art {
   opacity: 0;
 }
-.ember-art.art-ready {
-  overflow: visible;
-}
 .ember-art canvas {
   position: relative;
-  z-index: 1;
-}
-.ember-art img {
   z-index: 1;
 }
 :root[data-shift="night"] .day-art {
@@ -125,15 +119,8 @@ body {
   width: 100%;
   height: 100%;
 }
-.stone-ring img {
-  position: absolute;
-  max-width: none;
-  height: auto;
-  mix-blend-mode: multiply;
-}
-.stone-ring canvas,
-.stone-ring img {
-  transition: filter 800ms ease;
+.stone-ring canvas {
+  transition: opacity 240ms ease-out;
 }
 
 .introduction {
