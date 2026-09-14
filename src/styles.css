@@ -86,28 +86,25 @@ body {
 .ember-art {
   opacity: 0;
 }
-.ember-art::before {
-  position: absolute;
-  inset: 9%;
-  content: "";
-  background: radial-gradient(
-    circle,
-    rgb(225 67 35 / 0.34) 0,
-    rgb(169 34 25 / 0.2) 38%,
-    transparent 72%
-  );
-  filter: blur(15px);
-  transform: scale(0.9);
-  animation: ember-breathe 6.8s ease-in-out infinite alternate;
+.ember-art.art-ready {
+  overflow: visible;
 }
 .ember-art canvas {
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 0 9px rgb(224 55 30 / 0.2));
+  filter:
+    drop-shadow(0 0 13px rgb(255 111 49 / 0.55))
+    drop-shadow(0 0 30px rgb(213 49 29 / 0.44))
+    drop-shadow(0 0 58px rgb(132 25 25 / 0.36));
+  animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 .ember-art img {
   z-index: 1;
-  filter: drop-shadow(0 0 9px rgb(224 55 30 / 0.2));
+  filter:
+    drop-shadow(0 0 13px rgb(255 111 49 / 0.55))
+    drop-shadow(0 0 30px rgb(213 49 29 / 0.44))
+    drop-shadow(0 0 58px rgb(132 25 25 / 0.36));
+  animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 :root[data-shift="night"] .day-art {
   opacity: 0;
@@ -287,8 +284,10 @@ h1 {
 
 @keyframes ember-breathe {
   to {
-    opacity: 0.68;
-    transform: scale(1.08);
+    filter:
+      drop-shadow(0 0 17px rgb(255 111 49 / 0.62))
+      drop-shadow(0 0 38px rgb(213 49 29 / 0.5))
+      drop-shadow(0 0 68px rgb(132 25 25 / 0.4));
   }
 }
 
@@ -318,7 +317,8 @@ h1 {
   .stone-ring {
     transform: none !important;
   }
-  .ember-art::before {
+  .ember-art canvas,
+  .ember-art img {
     animation: none;
   }
   *,

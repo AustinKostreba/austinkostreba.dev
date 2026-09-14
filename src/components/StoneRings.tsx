@@ -196,7 +196,7 @@ export function StoneRings() {
         >
           {[artwork, emberArtwork].map((source, artworkIndex) => (
             <div
-              className={`stone-art-layer ${artworkIndex ? "ember-art" : "day-art"}`}
+              className={`stone-art-layer ${artworkIndex ? "ember-art" : "day-art"} ${ready[artworkIndex] ? "art-ready" : ""}`}
               key={source}
             >
               <img
