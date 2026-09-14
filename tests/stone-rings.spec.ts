@@ -15,7 +15,7 @@ test("rings render, move subtly, and respect reduced motion", async ({
   await page.goto("/");
   const rings = page.locator(".stone-ring");
   await expect(rings).toHaveCount(5);
-  await expect(page.locator(".background-ember")).toHaveCount(10);
+  await expect(page.locator(".background-ember")).toHaveCount(36);
   await expect(rings.first().locator("canvas").first()).toHaveCSS(
     "opacity",
     "1",

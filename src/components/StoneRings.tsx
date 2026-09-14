@@ -11,18 +11,19 @@ const rings = [
   { x: 843, y: 646, width: 231, height: 224, driftX: 7, driftY: 9 },
 ];
 
-const backgroundEmbers = [
-  { source: 1, left: 2, top: 4, size: 18, blur: 8, opacity: 0.3 },
-  { source: 2, left: 36, top: -1, size: 15, blur: 11, opacity: 0.22 },
-  { source: 4, left: 67, top: 7, size: 20, blur: 7, opacity: 0.28 },
-  { source: 1, left: 12, top: 31, size: 14, blur: 12, opacity: 0.2 },
-  { source: 3, left: 43, top: 27, size: 23, blur: 9, opacity: 0.25 },
-  { source: 0, left: 76, top: 34, size: 18, blur: 13, opacity: 0.19 },
-  { source: 2, left: -2, top: 57, size: 17, blur: 9, opacity: 0.27 },
-  { source: 4, left: 30, top: 62, size: 19, blur: 13, opacity: 0.2 },
-  { source: 1, left: 59, top: 65, size: 14, blur: 8, opacity: 0.3 },
-  { source: 0, left: 79, top: 75, size: 21, blur: 12, opacity: 0.2 },
-];
+const backgroundEmbers = Array.from({ length: 36 }, (_, index) => {
+  const row = Math.floor(index / 6);
+  const column = index % 6;
+  return {
+    source: (index * 3 + row) % rings.length,
+    left: -10 + column * 19 + (row % 2) * 8,
+    top: -9 + row * 19 + (column % 3) * 2,
+    size: 19 + ((index * 7) % 10),
+    blur: 8 + ((index * 5) % 9),
+    opacity: 0.13 + ((index * 3) % 7) * 0.018,
+    rotation: -18 + ((index * 11) % 37),
+  };
+});
 
 export function StoneRings() {
   const root = useRef<HTMLDivElement>(null);
@@ -219,6 +220,7 @@ export function StoneRings() {
               width: `${ember.size}%`,
               filter: `blur(${ember.blur}px)`,
               opacity: ember.opacity,
+              transform: `rotate(${ember.rotation}deg)`,
             }}
           />
         ))}

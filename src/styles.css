@@ -73,6 +73,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .ember-field {
   position: absolute;
@@ -81,6 +82,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: opacity 800ms ease;
+  animation: background-ember-drift 34s ease-in-out infinite alternate;
 }
 :root[data-shift="night"] .ember-field {
   opacity: 1;
@@ -89,14 +91,6 @@ body {
   position: absolute;
   height: auto;
   mix-blend-mode: screen;
-  animation: background-ember-drift 28s ease-in-out infinite alternate;
-}
-.background-ember:nth-child(2n) {
-  animation-direction: alternate-reverse;
-  animation-duration: 34s;
-}
-.background-ember:nth-child(3n) {
-  animation-duration: 39s;
 }
 .stone-ring {
   position: absolute;
@@ -310,7 +304,7 @@ h1 {
 
 @keyframes background-ember-drift {
   to {
-    transform: translate3d(5px, -7px, 0) scale(1.025);
+    transform: translate3d(7px, -9px, 0) scale(1.015);
   }
 }
 
@@ -343,7 +337,7 @@ h1 {
   .stone-ring::before {
     animation: none;
   }
-  .background-ember {
+  .ember-field {
     animation: none;
   }
   *,
