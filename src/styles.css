@@ -92,18 +92,12 @@ body {
 .ember-art canvas {
   position: relative;
   z-index: 1;
-  filter:
-    drop-shadow(0 0 13px rgb(255 111 49 / 0.55))
-    drop-shadow(0 0 30px rgb(213 49 29 / 0.44))
-    drop-shadow(0 0 58px rgb(132 25 25 / 0.36));
+  filter: drop-shadow(0 0 42px rgb(194 45 29 / 0.52));
   animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 .ember-art img {
   z-index: 1;
-  filter:
-    drop-shadow(0 0 13px rgb(255 111 49 / 0.55))
-    drop-shadow(0 0 30px rgb(213 49 29 / 0.44))
-    drop-shadow(0 0 58px rgb(132 25 25 / 0.36));
+  filter: drop-shadow(0 0 42px rgb(194 45 29 / 0.52));
   animation: ember-breathe 6.8s ease-in-out infinite alternate;
 }
 :root[data-shift="night"] .day-art {
@@ -284,10 +278,7 @@ h1 {
 
 @keyframes ember-breathe {
   to {
-    filter:
-      drop-shadow(0 0 17px rgb(255 111 49 / 0.62))
-      drop-shadow(0 0 38px rgb(213 49 29 / 0.5))
-      drop-shadow(0 0 68px rgb(132 25 25 / 0.4));
+    filter: drop-shadow(0 0 50px rgb(194 45 29 / 0.58));
   }
 }
 
