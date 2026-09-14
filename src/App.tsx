@@ -111,19 +111,17 @@ export default function App() {
             </p>
           )}
         </div>
-        <a
-          className="profile-link"
-          href={
-            isNight
-              ? "https://www.wmfrd.org/"
-              : "https://www.linkedin.com/in/austinkostreba/"
-          }
-          target="_blank"
-          rel="noreferrer"
-        >
-          {isNight ? "West Metro Fire-Rescue" : "LinkedIn"}
-          <span className="sr-only"> (opens in a new tab)</span>
-        </a>
+        {!isNight && (
+          <a
+            className="profile-link"
+            href="https://www.linkedin.com/in/austinkostreba/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        )}
       </div>
     </main>
   );

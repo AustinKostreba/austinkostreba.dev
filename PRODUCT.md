@@ -32,7 +32,7 @@ The site is a simple public identity page. It should be useful when shared direc
 
 - One static, responsive page at launch.
 - No blog, project archive, headshot, contact form, or public email yet.
-- LinkedIn and the West Metro Fire-Rescue District website are the external destinations.
+- LinkedIn is the only external destination and appears in Day mode.
 - The structure should allow future writing or project pages without requiring a redesign.
 - Deployment should work with Cloudflare Pages and the existing Cloudflare-managed domain.
 - The current scope contains no analytics, cookies, backend, or third-party embeds.
@@ -45,7 +45,7 @@ The site is a simple public identity page. It should be useful when shared direc
 - Evan You’s concise personal homepage is a binding reference for restraint and density; Lee Robinson’s site is a reference for adding one memorable visual gesture without overwhelming the biography.
 - No headshot.
 - Stone Rings is the chosen visual world: warm off-white paper, five tactile plum-and-terracotta ring forms, and a restrained serif-led type pairing.
-- Five artwork forms drift independently by a few pixels and respond subtly to nearby mouse movement. Day uses the original stone rings; Night uses purpose-built charcoal and ember forms in the same composition. No water or fluid effects. Reduced-motion visitors receive still artwork.
+- On desktop, five artwork forms drift independently by a few pixels and respond subtly to nearby mouse movement. Day uses the original stone rings; Night uses purpose-built charcoal and ember forms over a soft environmental coal bed. Mobile omits decorative artwork to preserve the compact business-card experience. No water or fluid effects. Reduced-motion visitors receive still artwork.
 - A Day/Night switch changes between Austin’s Renaissance and firefighter introductions. Night uses a dark paper treatment and an authored transition while preserving the same physical-card identity.
 
 ## Evidence on Hand

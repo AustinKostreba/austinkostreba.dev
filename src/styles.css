@@ -73,11 +73,11 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 .ember-field {
   position: absolute;
-  inset: -5% -8% -7% -12%;
+  inset: -24% -26% -25% -30%;
   z-index: 0;
   opacity: 0;
   pointer-events: none;
@@ -93,21 +93,21 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: blur(5px) saturate(0.82) brightness(0.62);
+  filter: blur(12px) saturate(0.82) brightness(0.62);
   mix-blend-mode: screen;
   mask-image:
     linear-gradient(
       to bottom,
       transparent 0,
-      black 13%,
-      black 82%,
+      black 21%,
+      black 78%,
       transparent 100%
     ),
     linear-gradient(
       to right,
       transparent 0,
-      black 14%,
-      black 86%,
+      black 22%,
+      black 78%,
       transparent 100%
     );
   mask-composite: intersect;
@@ -202,10 +202,6 @@ h1 {
   color: var(--foreground);
   font-size: 1.5132cqw;
   line-height: 1.3;
-}
-
-:root[data-shift="night"] .profile-link {
-  top: 61.29%;
 }
 
 .role {
@@ -443,13 +439,6 @@ h1 {
   }
 
   .stone-artwork {
-    position: relative;
-    left: auto;
-    top: auto;
-    order: 2;
-    width: calc(100% + 1rem);
-    height: auto;
-    margin: 2.1rem -0.5rem -0.5rem;
-    aspect-ratio: 866 / 922;
+    display: none;
   }
 }

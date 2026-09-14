@@ -76,9 +76,7 @@ test("copy, fonts, mobile layout and keyboard access", async ({ page }) => {
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(
     390,
   );
-  const intro = await page.locator(".introduction").boundingBox();
-  const art = await page.locator(".stone-artwork").boundingBox();
-  expect(art!.y).toBeGreaterThan(intro!.y + intro!.height);
+  await expect(page.locator(".stone-artwork")).toBeHidden();
   await page.keyboard.press("Tab");
   await expect(page.getByRole("switch")).toBeFocused();
   await page.keyboard.press("Tab");
@@ -105,9 +103,7 @@ test("day and night states switch copy, theme, and destination", async ({
   await expect(page.locator(".current-work")).toContainText(
     "On nights and weekends, I respond to emergencies",
   );
-  await expect(
-    page.getByRole("link", { name: /West Metro Fire-Rescue/ }),
-  ).toHaveAttribute("href", "https://www.wmfrd.org/");
+  await expect(page.getByRole("link")).toHaveCount(0);
   await expect(page.locator("body")).toHaveCSS(
     "background-color",
     "rgb(23, 21, 28)",
