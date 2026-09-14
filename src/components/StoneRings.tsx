@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import artwork from "../../assets/plates/stone-rings.png";
 import emberArtwork from "../../assets/plates/ember-coals.png";
+import emberBed from "../../assets/plates/ember-bed.png";
 
 // Original artwork coordinates, including the delicate outer pigment marks.
 const rings = [
@@ -10,20 +11,6 @@ const rings = [
   { x: 1212, y: 464, width: 341, height: 365, driftX: 9, driftY: 11 },
   { x: 843, y: 646, width: 231, height: 224, driftX: 7, driftY: 9 },
 ];
-
-const backgroundEmbers = Array.from({ length: 36 }, (_, index) => {
-  const row = Math.floor(index / 6);
-  const column = index % 6;
-  return {
-    source: (index * 3 + row) % rings.length,
-    left: -10 + column * 19 + (row % 2) * 8,
-    top: -9 + row * 19 + (column % 3) * 2,
-    size: 19 + ((index * 7) % 10),
-    blur: 8 + ((index * 5) % 9),
-    opacity: 0.13 + ((index * 3) % 7) * 0.018,
-    rotation: -18 + ((index * 11) % 37),
-  };
-});
 
 export function StoneRings() {
   const root = useRef<HTMLDivElement>(null);
@@ -89,13 +76,6 @@ export function StoneRings() {
           context.putImageData(pixels, 0, 0);
           };
           rings.forEach((ring, index) => renderCrop(canvases[index], ring));
-          if (imageIndex === 1) {
-            root.current!
-              .querySelectorAll<HTMLCanvasElement>("[data-ember-source]")
-              .forEach((canvas) =>
-                renderCrop(canvas, rings[Number(canvas.dataset.emberSource)]),
-              );
-          }
           setReady((current) =>
             current.map((value, index) =>
               index === imageIndex ? true : value,
@@ -209,21 +189,7 @@ export function StoneRings() {
   return (
     <div ref={root} className="stone-rings" aria-hidden="true">
       <div className="ember-field">
-        {backgroundEmbers.map((ember, index) => (
-          <canvas
-            className="background-ember"
-            data-ember-source={ember.source}
-            key={index}
-            style={{
-              left: `${ember.left}%`,
-              top: `${ember.top}%`,
-              width: `${ember.size}%`,
-              filter: `blur(${ember.blur}px)`,
-              opacity: ember.opacity,
-              transform: `rotate(${ember.rotation}deg)`,
-            }}
-          />
-        ))}
+        <img src={emberBed} alt="" draggable="false" />
       </div>
       {rings.map((ring, index) => (
         <div
