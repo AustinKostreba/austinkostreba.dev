@@ -15,6 +15,7 @@ test("rings render, move subtly, and respect reduced motion", async ({
   await page.goto("/");
   const rings = page.locator(".stone-ring");
   await expect(rings).toHaveCount(5);
+  await expect(page.locator(".background-ember")).toHaveCount(10);
   await expect(rings.first().locator("canvas").first()).toHaveCSS(
     "opacity",
     "1",
@@ -113,6 +114,7 @@ test("day and night states switch copy, theme, and destination", async ({
   );
   await expect(page.locator(".history")).toHaveCount(0);
   await expect(page.locator(".ember-art").first()).toHaveCSS("opacity", "1");
+  await expect(page.locator(".ember-field")).toHaveCSS("opacity", "1");
   await shift.click();
   await shift.click();
   await expect(shift).toHaveAttribute("aria-checked", "true");

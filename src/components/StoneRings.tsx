@@ -11,6 +11,19 @@ const rings = [
   { x: 843, y: 646, width: 231, height: 224, driftX: 7, driftY: 9 },
 ];
 
+const backgroundEmbers = [
+  { source: 1, left: 2, top: 4, size: 18, blur: 8, opacity: 0.3 },
+  { source: 2, left: 36, top: -1, size: 15, blur: 11, opacity: 0.22 },
+  { source: 4, left: 67, top: 7, size: 20, blur: 7, opacity: 0.28 },
+  { source: 1, left: 12, top: 31, size: 14, blur: 12, opacity: 0.2 },
+  { source: 3, left: 43, top: 27, size: 23, blur: 9, opacity: 0.25 },
+  { source: 0, left: 76, top: 34, size: 18, blur: 13, opacity: 0.19 },
+  { source: 2, left: -2, top: 57, size: 17, blur: 9, opacity: 0.27 },
+  { source: 4, left: 30, top: 62, size: 19, blur: 13, opacity: 0.2 },
+  { source: 1, left: 59, top: 65, size: 14, blur: 8, opacity: 0.3 },
+  { source: 0, left: 79, top: 75, size: 21, blur: 12, opacity: 0.2 },
+];
+
 export function StoneRings() {
   const root = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState([false, false]);
@@ -25,8 +38,10 @@ export function StoneRings() {
           const canvases = root.current!.querySelectorAll<HTMLCanvasElement>(
             `[data-artwork="${imageIndex}"]`,
           );
-        rings.forEach((ring, index) => {
-          const canvas = canvases[index];
+          const renderCrop = (
+            canvas: HTMLCanvasElement,
+            ring: (typeof rings)[number],
+          ) => {
           canvas.width = ring.width;
           canvas.height = ring.height;
           const context = canvas.getContext("2d");
@@ -71,7 +86,15 @@ export function StoneRings() {
             pixels.data[p + 3] = Math.round(alpha * 255);
           }
           context.putImageData(pixels, 0, 0);
-        });
+          };
+          rings.forEach((ring, index) => renderCrop(canvases[index], ring));
+          if (imageIndex === 1) {
+            root.current!
+              .querySelectorAll<HTMLCanvasElement>("[data-ember-source]")
+              .forEach((canvas) =>
+                renderCrop(canvas, rings[Number(canvas.dataset.emberSource)]),
+              );
+          }
           setReady((current) =>
             current.map((value, index) =>
               index === imageIndex ? true : value,
@@ -184,6 +207,22 @@ export function StoneRings() {
 
   return (
     <div ref={root} className="stone-rings" aria-hidden="true">
+      <div className="ember-field">
+        {backgroundEmbers.map((ember, index) => (
+          <canvas
+            className="background-ember"
+            data-ember-source={ember.source}
+            key={index}
+            style={{
+              left: `${ember.left}%`,
+              top: `${ember.top}%`,
+              width: `${ember.size}%`,
+              filter: `blur(${ember.blur}px)`,
+              opacity: ember.opacity,
+            }}
+          />
+        ))}
+      </div>
       {rings.map((ring, index) => (
         <div
           key={index}
